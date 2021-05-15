@@ -1,0 +1,90 @@
+<header class="header-content header">
+    <div class="logo-content">
+        <img src="../../../assets/logo.png" alt="">
+        <div>
+            <span class="emp-text">EMPLOYEE</span><br>
+            <span class="emp-text emp-payroll">PAYROLL</span>
+        </div>
+    </div>
+</header>
+<div id="formId" class="form-content">
+    <form class="form">
+        <div class="form-head">Employee Payroll Form</div>
+        <div class="row-content">
+            <p class="name">Name</p>
+            <input class="inputt" style="height: 50px;" type="text" name="name" formControlName="name" placeholder=" your name.. " required>
+        </div>
+
+        <div class="row-content">
+            <p class="pro">Profile Image</p>
+            <div class="fle">
+                <div class="fle1" *ngFor="let profile of profile">
+                    <div class="profile-radio-content" style="top: 355px;">
+                        <input type="radio" class="profile1" name="profile" [value]="profile" formControlName="profile" required>
+                    </div>
+                    <div>
+                        <img class="profile" [src]="profile">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row-content">
+            <p class="gen">Gender</p>
+            <div style="margin-left: 92px;">
+                <input class="gend" type="radio" id="male" name="gender" value="male" formControlName="gender">
+                <label class="text" for="male">Male</label>
+                <input class="radio1" type="radio" id="female" name="gender" value="female" formControlName="gender">
+                <label class="text" for="female">Female</label>
+            </div>
+        </div>
+
+        <div class="row-content">
+            <p class="depp">Department</p>
+            <div class="check3">
+                <div class="check2" *ngFor="let department of department">
+                    <div class="check1">
+                        <input class="check" type="checkbox" [name]="department" [value]="department" formControlName="department" />
+                    </div>
+                    <div class="llb">
+                        <label class="lbl">{{department}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row-content">
+            <p class="sal">Salary</p>
+            <select class="select" name="salary" formControlName="salary"> 
+                <option>Select Salary</option>
+                <option *ngFor="let salary of salary ">{{salary}}</option>
+            </select>
+        </div>
+        <div class="row-content">
+            <p class="start">Start Date</p>
+            <div class="date">
+                <select name="day" required formControlName="day">
+                    <option value=" ">Day</option>
+                      <option *ngFor="let date of date">{{date}}</option>
+                </select>
+                <select id="month" name="month" required formControlName="month">
+                    <option value=" ">Month</option>
+                    <option *ngFor="let month of month">{{month}}</option>
+                </select>
+                <select name="year" required formControlName="year">
+                    <option value=" ">Year</option>
+                    <option *ngFor="let year of year">{{year}}</option>     
+                </select>
+            </div>
+        </div>
+        <div class="row-content">
+            <p class="note">Notes</p>
+            <textarea class="input1" name="note" formControlName="note"></textarea>
+        </div>
+        <div class="button-content" style="flex-direction:row;">
+            <button type="button" class="button1" routerLink="/dashboard">Cancel</button>
+            <button type="submit" class="button submitButton" id="submitButton">Submit</button>
+            <button type="reset" class="resetButton button">Reset</button>
+        </div>
+    </form>
+</div>
