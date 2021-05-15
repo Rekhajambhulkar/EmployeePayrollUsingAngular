@@ -8,7 +8,7 @@
     </div>
 </header>
 <div id="formId" class="form-content">
-    <form class="form">
+    <form class="form" [formGroup]="requiredForm" (ngSubmit)="onSubmit(requiredForm.value)">
         <div class="form-head">Employee Payroll Form</div>
         <div class="row-content">
             <p class="name">Name</p>
@@ -44,7 +44,7 @@
             <div class="check3">
                 <div class="check2" *ngFor="let department of department">
                     <div class="check1">
-                        <input class="check" type="checkbox" [name]="department" [value]="department" formControlName="department" />
+                        <input class="check" type="checkbox" [name]="department" [value]="department" formControlName="department" (change)="onChange($event)" />
                     </div>
                     <div class="llb">
                         <label class="lbl">{{department}}</label>
@@ -62,7 +62,7 @@
         </div>
         <div class="row-content">
             <p class="start">Start Date</p>
-            <div class="date">
+            <div class="date" (change)="onSelect($event)">
                 <select name="day" required formControlName="day">
                     <option value=" ">Day</option>
                       <option *ngFor="let date of date">{{date}}</option>
@@ -81,10 +81,10 @@
             <p class="note">Notes</p>
             <textarea class="input1" name="note" formControlName="note"></textarea>
         </div>
-        <div class="button-content" style="flex-direction:row;">
-            <button type="button" class="button1" routerLink="/dashboard">Cancel</button>
-            <button type="submit" class="button submitButton" id="submitButton">Submit</button>
-            <button type="reset" class="resetButton button">Reset</button>
+        <div class="button-content " style="flex-direction:row; ">
+            <button type="button " class="button1 " routerLink="/dashboard ">Cancel</button>
+            <button type="submit " class="button submitButton " id="submitButton ">Submit</button>
+            <button type="reset " class="resetButton button ">Reset</button>
         </div>
     </form>
 </div>
