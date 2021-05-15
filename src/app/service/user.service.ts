@@ -12,4 +12,7 @@ export class UserService {
   addData(data:any){
     return this.http.addPost(this.BaseUrl, data);
   }
+  getEmp(){
+    return this.http.getEmpData(this.BaseUrl);
+  }
 }

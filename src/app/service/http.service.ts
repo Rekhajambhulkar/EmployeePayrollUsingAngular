@@ -15,5 +15,14 @@ export class HttpService {
     } 
       return this.http.post(url, data, options)
   }
+  getEmpData = (url:any) =>{
+    let options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    } 
+      return this.http.get(url, options)
+  }
+
 
 }
