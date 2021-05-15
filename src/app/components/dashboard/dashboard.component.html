@@ -1,0 +1,51 @@
+<header class="header-content header">
+    <div class="logo-content">
+        <img src="../../../assets/logo.png" alt="Employee Payroll">
+        <div>
+            <span class="emp-text">EMPLOYEE</span><br>
+            <span class="emp-text emp-payroll">PAYROLL</span>
+        </div>
+    </div>
+</header>
+<div class="main-content">
+    <div class="header-content">
+        <div class="emp-detail-text">
+            Employee Details
+        </div>
+        <a routerLink="/home" class="add-button">
+            <img src="../../../assets/add.svg" alt="Add Button">
+            <div>Add User</div>
+        </a>
+    </div>
+    <div class="table-main">
+        <table id="table-display" class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>NAME</th>
+                    <th>GENDER</th>
+                    <th>DEPARTMENT</th>
+                    <th>SALARY</th>
+                    <th>START DATE</th>
+                    <th>ACTIONS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let emp of employee">
+                    <td>
+                        <img class="profile" id='image1' [src]="emp.profile">
+                    </td>
+                    <td>{{emp.name}}</td>
+                    <td>{{emp.gender}}</td>
+                    <td>{{emp.department}}</td>
+                    <td>{{emp.salary}}</td>
+                    <td>{{emp.startdate}}</td>
+                    <td>
+                        <img class="img1" src="../../../assets/dlt.svg">
+                        <img class="img" routerLink="/update/{{emp.id}}" src="../../../assets/update.svg">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
