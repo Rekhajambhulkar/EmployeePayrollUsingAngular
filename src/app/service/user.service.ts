@@ -15,4 +15,11 @@ export class UserService {
   getEmp(){
     return this.http.getEmpData(this.BaseUrl);
   }
+  getCurrentData =(id:number) =>{
+    return this.http.getEmpData(`${this.BaseUrl}/${id}`)
+  }
+  deleteData(id:string){
+    return this.http.delete(`${this.BaseUrl}/${id}`);
+  }
+
 }

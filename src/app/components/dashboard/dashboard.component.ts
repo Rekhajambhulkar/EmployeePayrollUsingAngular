@@ -23,4 +23,13 @@ export class DashboardComponent implements OnInit {
     })
   }
 
+  onClick(id: any){
+    console.log(id);
+    this.userService.deleteData(id).subscribe(res =>{
+      console.log("deleted successfully", res);      
+    })
+
+  }
+
+
 }

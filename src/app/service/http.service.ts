@@ -23,6 +23,13 @@ export class HttpService {
     } 
       return this.http.get(url, options)
   }
-
+  delete = (url:any) =>{
+    let options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    } 
+    return this.http.delete(url, options)
+  }
 
 }

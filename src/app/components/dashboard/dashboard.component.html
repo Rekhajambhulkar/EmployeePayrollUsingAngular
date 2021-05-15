@@ -41,8 +41,8 @@
                     <td>{{emp.salary}}</td>
                     <td>{{emp.startdate}}</td>
                     <td>
-                        <img class="img1" src="../../../assets/dlt.svg">
-                        <img class="img" routerLink="/update/{{emp.id}}" src="../../../assets/update.svg">
+                        <img class="img1" src="../../../assets/dlt.svg" (click)="onClick(emp.id)">
+                        <img class="img" src="../../../assets/update.svg">
                     </td>
                 </tr>
             </tbody>

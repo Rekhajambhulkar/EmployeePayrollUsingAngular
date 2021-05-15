@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, FormBuilder, FormArray, Validators} from '@angular/forms';
 import {UserService} from '../../service/user.service'
-import {Router} from '@angular/router'
+import {ActivatedRoute, Router} from '@angular/router'
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
   year = [2019, 2020, 2021, 2022, 2022]
   employees: any = [];
   profile = ['../../../assets/Ellipse -3.png','../../../assets/Ellipse 1.png','../../../assets/Ellipse -8.png','../../../assets/Ellipse -4.png']
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private route: Router) { 
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private route: Router, private router:ActivatedRoute) { 
     this.requiredForm = this.formBuilder.group({
       name: ['', [Validators.required,Validators.minLength(3)]],
       profile:['',[Validators.required]],
@@ -44,6 +44,21 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.day();
+    this.userService.getCurrentData(this.router.snapshot.params.id).subscribe((result:any) =>{
+      console.log(result);
+      console.log(result.department);
+      this.requiredForm = new FormGroup({
+      name: new FormControl(result['name']),
+      profile: new FormControl(result.profile),
+      gender: new FormControl(result['gender']),
+      department: new FormControl('deaprtment[0]'),
+      salary: new FormControl(result['salary']),
+      day: new FormControl(result.startdate[0]),
+      month: new FormControl(result.startdate[1]),
+      year: new FormControl(result.startdate[2]),
+      note: new FormControl(result['note']),
+        })
+      })
   }
 
   day() {
@@ -86,4 +101,5 @@ export class HomeComponent implements OnInit {
        start.removeAt(index);
     }
   }
+ 
 }
