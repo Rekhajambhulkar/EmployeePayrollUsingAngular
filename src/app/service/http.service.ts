@@ -31,5 +31,12 @@ export class HttpService {
     } 
     return this.http.delete(url, options)
   }
-
+  update = (url: any, data:any) => {   
+    let options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    } 
+      return this.http.put(url,data,options)
+  }
 }

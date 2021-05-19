@@ -21,5 +21,8 @@ export class UserService {
   deleteData(id:string){
     return this.http.delete(`${this.BaseUrl}/${id}`);
   }
+  updateData(id:number, data:any){
+    return this.http.update(`${this.BaseUrl}/${id}`, data);
 
+  }
 }

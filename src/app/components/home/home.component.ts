@@ -44,21 +44,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.day();
-    this.userService.getCurrentData(this.router.snapshot.params.id).subscribe((result:any) =>{
-      console.log(result);
-      console.log(result.department);
-      this.requiredForm = new FormGroup({
-      name: new FormControl(result['name']),
-      profile: new FormControl(result.profile),
-      gender: new FormControl(result['gender']),
-      department: new FormControl('deaprtment[0]'),
-      salary: new FormControl(result['salary']),
-      day: new FormControl(result.startdate[0]),
-      month: new FormControl(result.startdate[1]),
-      year: new FormControl(result.startdate[2]),
-      note: new FormControl(result['note']),
-        })
-      })
+   
   }
 
   day() {
@@ -100,6 +86,5 @@ export class HomeComponent implements OnInit {
        const index = start.controls.findIndex(x => x.value === e.target.value);
        start.removeAt(index);
     }
-  }
- 
+  } 
 }
