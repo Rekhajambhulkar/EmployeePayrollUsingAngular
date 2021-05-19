@@ -15,5 +15,31 @@ export class HttpService {
     } 
       return this.http.post(url, data, options)
   }
+  
+  getEmpData = (url:any) =>{
+    let options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    } 
+      return this.http.get(url, options)
+  }
 
+  delete = (url:any) =>{
+    let options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    } 
+    return this.http.delete(url, options)
+  }
+
+  update = (url: any, data:any) => {   
+    let options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    } 
+      return this.http.put(url,data,options)
+  }
 }

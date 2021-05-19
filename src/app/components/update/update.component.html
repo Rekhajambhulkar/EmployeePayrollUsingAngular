@@ -1,0 +1,96 @@
+<header class="header-content header">
+    <div class="logo-content">
+        <img src="../../../assets/logo.png" alt="">
+        <div>
+            <span class="emp-text">EMPLOYEE</span><br>
+            <span class="emp-text emp-payroll">PAYROLL</span>
+        </div>
+    </div>
+</header>
+<div id="formId" class="form-content">
+    <form class="form" [formGroup]="form" (ngSubmit)="onUpdate(form.value)" novalidate>
+        <div class="form-head1">Employee Payroll Form</div>
+        <div class="row-content">
+            <p class="name">Name</p>
+            <input class="inputt" style="height: 50px;" type="text" name="name" formControlName="name" required>
+            <!--
+            <div *ngIf="f.name.touched && f.name.invalid" class="text-danger ">
+                <div class="error " *ngIf="f.name.errors.required ">Name is required.</div>
+                <div class="error " *ngIf="f.name.errors?.minlength ">Minimum 4 character are required.</div>
+            </div> -->
+        </div>
+        <div class="row-content ">
+            <p class="pro ">Profile Image</p>
+            <div class="fle ">
+                <div class="fle1 " *ngFor="let profile of profile ">
+                    <div class="profile-radio-content " style="top: 355px; ">
+                        <input type="radio" class="profile1" name="profile" value={{profile}} formControlName="profile" required>
+                    </div>
+                    <div>
+                        <img class="profile" [src]="profile">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- <div class="row-content ">
+            <p class="pro">Profile Image</p>
+            <div class="profile-radio-content" style="top: 355px;" *ngFor="let profile of profile">
+                <input type="radio" class="profile1" name="profile" value={{profile}} formControlName="profile" required>
+                <img class="profile" [src]="profile"> </div>
+        </div> -->
+        <div class="row-content ">
+            <p class="gen">Gender</p>
+            <div style="margin-left: 92px;">
+                <input class="gend" id="male" type="radio" name="gender" value="male" formControlName="gender">
+                <label class="text" for="male">Male</label>
+                <input class="radio1" id="female" type="radio" name="gender" value="female" formControlName="gender">
+                <label class="text" for="female">Female</label>
+            </div>
+        </div>
+        <div class="row-content">
+            <p class="depp">Department</p>
+            <div class="check3">
+                <div class="check2" *ngFor="let department of department">
+                    <div class="check1">
+                        <input class="check" type="checkbox" [name]="department" [value]="department" formControlName="department" (change)="onChange($event)" />
+                    </div>
+                    <div class="llb">
+                        <label class="lbl">{{department}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row-content">
+            <p class="sal">Salary</p>
+            <select class="select" name="salary" formControlName="salary"> 
+                <option *ngFor="let salary of salary">{{salary}}</option>
+            </select>
+        </div>
+        <div class="row-content">
+            <p class="start">Start Date</p>
+            <div class="date">
+                <select name="day" formControlName="day">
+                    <option>Day</option>
+                      <option *ngFor="let date of date">{{date}}</option>
+                </select>
+                <select id="month" name="month" required formControlName="month">
+                    <option value=" ">Month</option>
+                    <option *ngFor="let month of month">{{month}}</option>
+                </select>
+                <select name="year" required formControlName="year">
+                    <option value=" ">Year</option>
+                    <option *ngFor="let year of year">{{year}}</option>     
+                </select>
+            </div>
+        </div>
+        <div class="row-content">
+            <p class="note">Notes</p>
+            <textarea class="input1" name="note" formControlName="note"></textarea>
+        </div>
+        <div class="button-content" style="flex-direction:row;">
+            <button type="button" class="button" routerLink="/dashboard">Cancel</button>
+            <button type="submit" class="button1">Update</button>
+        </div>
+    </form>
+</div>

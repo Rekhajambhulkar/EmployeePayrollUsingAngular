@@ -12,4 +12,20 @@ export class UserService {
   addData(data:any){
     return this.http.addPost(this.BaseUrl, data);
   }
+  getEmp(){
+    return this.http.getEmpData(this.BaseUrl);
+  }
+
+  deleteData(id:string){
+    return this.http.delete(`${this.BaseUrl}/${id}`);
+  }
+
+  updateData(id:number, data:any){
+    return this.http.update(`${this.BaseUrl}/${id}`, data);
+
+  }
+
+  getCurrentData =(id:number) =>{
+    return this.http.getEmpData(`${this.BaseUrl}/${id}`)
+  }
 }
